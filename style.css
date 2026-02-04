@@ -1,0 +1,402 @@
+/* --- 1. Variables & Reset --- */
+:root {
+    /* Color Palette (Clean Health-Tech) */
+    --bg-main: #FDFDFD;
+    --bg-secondary: #F4F6F8;
+    --primary: #00acea;       /* Medical Teal (Slightly vibrant) */
+    --primary-dark: #0090C8;
+    --primary-light: #E0F7FA;
+    --text-header: #2D3436;
+    --text-body: #636E72;
+    --card-bg: #FFFFFF;
+    
+    /* Functional Colors */
+    --success: #00C853;
+    --danger: #FF5252;
+    
+    /* UI Elements */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 25px rgba(0, 191, 165, 0.15);
+    
+    /* Spacing */
+    --container-width: 1140px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- 2. Typography & Utilities --- */
+h1, h2, h3 {
+    color: var(--text-header);
+    font-weight: 600;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.highlight {
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+}
+
+/* --- 3. Header & Nav --- */
+.glass-header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 16px 0;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-header);
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.logo span { color: var(--primary); }
+
+.desktop-nav {
+    display: none; /* Mobile first hidden */
+}
+
+@media (min-width: 768px) {
+    .desktop-nav {
+        display: flex;
+        gap: 32px;
+    }
+    .desktop-nav a {
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    .desktop-nav a:hover {
+        color: var(--primary);
+    }
+}
+
+/* --- 4. Status Badge --- */
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: var(--bg-secondary);
+    border: 1px solid #E2E8F0;
+}
+
+.status-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-body);
+}
+
+.status-badge.open {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-color: #C8E6C9;
+}
+.status-badge.open .dot { background-color: var(--success); box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.2); }
+
+.status-badge.closed {
+    background: #FFEBEE;
+    color: #C62828;
+    border-color: #FFCDD2;
+}
+.status-badge.closed .dot { background-color: var(--danger); }
+
+/* --- 5. Hero Section --- */
+.hero-section {
+    position: relative;
+    padding: 100px 0 80px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pill-label {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 1.0rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem; /* Mobile */
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--text-body);
+}
+
+/* CTA Buttons */
+.cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(0, 191, 165, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--primary-dark);
+    box-shadow: 0 6px 20px rgba(0, 191, 165, 0.6);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text-header);
+    border: 1px solid #E0E0E0;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-header);
+    transform: translateY(-2px);
+}
+
+/* Background Blobs (Decoration) */
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+}
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary);
+    top: -50px;
+    left: -100px;
+}
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: #81D4FA;
+    bottom: -50px;
+    right: -100px;
+}
+
+/* --- 6. Services Grid --- */
+.section-padding { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2rem; margin-bottom: 10px; }
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
+}
+
+.icon-box {
+    width: 56px;
+    height: 56px;
+    background: var(--bg-secondary);
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* --- 7. Info & Map Section --- */
+.info-section {
+    background: var(--bg-secondary);
+    padding: 80px 0;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile */
+    gap: 40px;
+    align-items: center;
+}
+
+.location-label { background: #E3F2FD; color: #1565C0; }
+
+.contact-list {
+    list-style: none;
+    margin: 32px 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.contact-list i {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-top: 4px;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.map-card {
+    height: 400px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: white;
+}
+
+/* --- 8. Footer --- */
+footer {
+    padding: 40px 0;
+    background: white;
+    border-top: 1px solid #F0F0F0;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-header);
+    transition: 0.2s;
+}
+
+.footer-social a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* --- Media Queries --- */
+@media (min-width: 768px) {
+    .hero-section h1 { font-size: 3.5rem; }
+    .split-layout { grid-template-columns: 1fr 1fr; }
+    .status-badge { font-size: 0.9rem; }
+}
