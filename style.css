@@ -104,6 +104,18 @@ a { text-decoration: none; color: inherit; }
 
 .logo span { color: var(--primary); }
 
+/* Added media query for smaller screens */
+@media (max-width: 767px) {
+    .logo {
+        font-size: 1.2rem; /* Adjusted font size for mobile */
+    }
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}
+
 .desktop-nav {
     display: none; /* Mobile first hidden */
 }

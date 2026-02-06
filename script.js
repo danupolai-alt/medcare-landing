@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isOpen) {
             statusElement.classList.add('open');
-            textElement.textContent = "เปิดทำการ (Open Now)";
+            textElement.innerHTML = "<a href='https://line.me/ti/p/@504ujipf' target='_blank'>เภสัชพร้อมบริการ</a>";
         } else {
             statusElement.classList.add('closed');
-            textElement.textContent = "ปิดทำการ (Closed)";
+            textElement.innerHTML = "<a href='https://line.me/ti/p/@504ujipf' target='_blank'>นอกเวลาบริการ</a>";
         }
     }
 
